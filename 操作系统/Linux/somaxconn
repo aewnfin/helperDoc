@@ -1,0 +1,13 @@
+内核参数 somaxconn (定义了系统中每一个端口最大的监听队列的长度)
+默认值一般是 128
+
+# 查看
+>cat /proc/sys/net/core/somaxconn
+
+# 修改
+- 临时
+sysctl -w net.core.somaxconn=2048
+- 永久
+>vi /etc/sysctl.conf
+net.core.somaxconn = 2048
+>sysctl -p

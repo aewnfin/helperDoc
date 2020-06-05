@@ -1,0 +1,3 @@
+REGEDIT4
+
+[LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvata]"DisableRemovable"=dword : 00000001

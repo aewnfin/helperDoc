@@ -1,0 +1,10 @@
+body{
+    font-family: ubuntu, Tahoma, Microsoft YaHei, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+img{
+    vertical-align: middle;
+}
+
+#tags img{
+    border: 2px solid red;
+}

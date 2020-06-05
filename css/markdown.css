@@ -1,0 +1,31 @@
+/* Linux FileSystem */
+/* file */
+.d {
+    color: mediumblue;
+}
+.c , .b {
+    color: gold;
+}
+.s {
+    color: violet;
+}
+.l {
+    color: turquoise;
+}
+/* type */
+.x {
+    color: lime;
+}
+.z {
+    color: red;
+}
+/* mod */
+.wxr {
+    color: black;
+    background-color: limegreen;
+}
+
+/* public */
+tip {
+    color: slategrey;
+}

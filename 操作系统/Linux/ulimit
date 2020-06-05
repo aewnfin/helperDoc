@@ -1,0 +1,14 @@
+# 利用ulimit命令可以对资源的可用性进行控制
+ulimit  [-HSTabcdefilmnpqrstuvx  [limit]]
+
+# 查看进程打开文件最大限制
+- 系统级
+>cat /proc/sys/fs/file-max
+- 用户级(一般是1024,云主机一般是65535)
+>ulimit -n
+
+# 修改限制
+- 临时
+>ulimit -HSn 2048
+- 永久
+>vi /etc/security/limits.conf
