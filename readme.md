@@ -7,7 +7,7 @@
 > 为了避免词汇的褒贬性挑拨读者神经，同时也是因为找不到对应的免费图标，我使用“魔术师”、“气球狗”、“兔子”，替代“专家”、“机器人”、“猴子”这一原先的代称。
 
 <div id="tags" style="text-align: right;">
-<img src="log/魔法师.png" height="30">
+<img src="log/魔术师.png" height="30">
 <img src="log/气球狗.png" height="30">
 <img src="log/兔子.png" height="30">
 </div>
