@@ -44,16 +44,16 @@ toc:
 ### 重新禁用 `Administrator` 账户
 1. 打开 `C:\Windows\system32\compmgmt.msc`，选择 “系统工具” 》“本地用户和组” 》“用户”
 
-    ![计算机管理](img\计算机管理.png)
+    ![计算机管理](img/计算机管理.png)
 2. 右键用户 `Administrator` ，选择 “属性”
 
-    ![Administrator属性](img\Administrator属性2.png)
+    ![Administrator属性](img/Administrator属性2.png)
 3. 勾选 “<input type="checkbox" checked="checked"/>账户已禁用(B)”
 
-    ![Administrator属性2](img\Administrator属性.png)
+    ![Administrator属性2](img/Administrator属性.png)
 4. 点击按钮 <button>确定</button>
 
-    ![计算机管理2](img\计算机管理2.png)
+    ![计算机管理2](img/计算机管理2.png)
 
 ### 关闭后门
 1. 右键 `C:\Windows\System32\cmd.exe` 选择“以管理员身份运行”，依次输入以下命令，依次点击 <kbd>Enter</kbd>
@@ -68,13 +68,13 @@ toc:
 ### 隐藏 `D` 盘
 1. 打开 `C:\Windows\System32\compmgmt.msc`，选择 “存储” 》“磁盘管理”
 
-    ![磁盘管理](img\磁盘管理.png)
+    ![磁盘管理](img/磁盘管理.png)
 2. 右键卷 `(D:)` ，选择 “更改驱动器号和路径(C)...”
 
-    ![驱动器号和路径2](img\驱动器号和路径2.png)
+    ![驱动器号和路径2](img/驱动器号和路径2.png)
 6. 选择驱动器号 `D:`，点击按钮 <button>删除(R)</button>
 
-    ![警告](img\警告.png)
+    ![警告](img/警告.png)
 7. 点击按钮 <button>是(Y)</button>
 
-    ![磁盘管理2](img\磁盘管理2.png)
+    ![磁盘管理2](img/磁盘管理2.png)
