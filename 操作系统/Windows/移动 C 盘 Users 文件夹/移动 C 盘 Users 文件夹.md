@@ -25,53 +25,56 @@ toc:
 &emsp;如果能把用户文件夹挪到另外一块硬盘{++或者另外一个硬盘分区++}上，那么系统维护就会容易得多。平时生成的文件{++大多数人放在“桌面”、“我的文档”里的文件最多++}，都被保存在系统盘之外；于是随时可以在不必担心用户文件丢失的情况下重新安装系统{++或恢复系统备份++}
 
 ## 步骤
-### 1. 准备另外一个硬盘 <u>作为目标文件夹</u>
-### 2. 复制 ==Users== 文件夹内容 <u>到目标文件夹</u>
-1. 注销当前账户
-2. 登录 `Administrator` 账户
-3. 以管理员身份执行拷贝命令
+@import "启用Administrator账户.md"
+@import "为磁盘添加路径.md"
+### 复制文件夹 "C:\Users" 到 "C:\New"
+1. 打开 `C:\Windows\System32\cmd.exe` 输入以下命令，点击 <kbd>Enter</kbd>
     ```bat
     robocopy C:\Users C:\New /E /COPYALL /XJ /XD C:\Users\Administrator
     ```
-4. 注销 `Administrator` 账户
-### 3. 使系统盘下路径 `C:\\Users\` 指向 <u>目标文件夹</u>
-
-1. 在登录界面点击 “ <img src="img\轻松访问.png" height="20"> ”-“轻松访问” ，勾选 “(不使用键盘输入)屏幕键盘”
-2. 点击 “确定”
-
-    ![cmd](img\cmd.png)
-3. 执行命令重命名卷
-    ```bat
-    move C:\Users C:\Users2 && move C:\New C:\Users
-    ```
-> <big>也许有用的命令</big>
-> - `resmon` 打开 “资源和性能监视器” 命令
-## 扫尾
-### 转移 `Administrator` 账户
-1. 登录其他拥有 `管理员` 权限的账户
-2. 以管理员身份执行拷贝命令
+@import "开启后门.md"
+@import "重命名文件夹.md"
+## 收尾工作
+### 转移 `Administrator` 用户数据
+1. 登录到原先的账户
+2. 右键 `C:\Windows\System32\cmd.exe` 选择“以管理员身份运行”，输入以下命令，点击 <kbd>Enter</kbd> 执行
     ```bat
     robocopy C:\Users2\Administrator C:\Users\Administrator /E /COPYALL /XJ
     ```
-### 禁用 `Administrator` 账户
-1. 打开 “计算机管理”，选择 “系统工具” 》“本地用户和组” 》“用户”
-2. 在 “Administrator” 用户 “属性” 中勾选 “账户已禁用(B)”
-3. 点击按钮 “确定”
+### 重新禁用 `Administrator` 账户
+1. 打开 `C:\Windows\system32\compmgmt.msc`，选择 “系统工具” 》“本地用户和组” 》“用户”
 
-### 还原 `osk.exe` 权限
-1. 删除软连接 `C:\Windows\System32\osk.exe`
-2. 以管理员身份重命名 `osk1.exe` 为 `osk.exe`
-3. 取消之前赋予 `Administrators` 的权限
-4. 手动输入 `NT SERVICE\TrustedInstaller` 更改 `osk.exe` 文件所有者 
+    ![计算机管理](img\计算机管理.png)
+2. 右键用户 `Administrator` ，选择 “属性”
 
-### 取消 “帮助中心” 开机设置
-1. 打开 “轻松访问中心”
+    ![Administrator属性](img\Administrator属性2.png)
+3. 勾选 “<input type="checkbox" checked="checked"/>账户已禁用(B)”
 
-    ![轻松访问中心](img\轻松访问中心.png)
-2. 点击 “使用没有鼠标或键盘的计算机”
+    ![Administrator属性2](img\Administrator属性.png)
+4. 点击按钮 <button>确定</button>
 
-    ![使用没有鼠标或键盘的计算机](img\使用没有鼠标或键盘的计算机.png)
-3. 取消勾选 “使用屏幕键盘(K)”
+    ![计算机管理2](img\计算机管理2.png)
 
-    ![使用没有鼠标或键盘的计算机2](img\使用没有鼠标或键盘的计算机2.png)
-4. 点击 “确定(O)”
+### 关闭后门
+1. 右键 `C:\Windows\System32\cmd.exe` 选择“以管理员身份运行”，依次输入以下命令，依次点击 <kbd>Enter</kbd>
+    ```bat{class="line-numbers"}
+    cd C:\windows\system32
+    del Utilman.exe
+    rename Utilman_bak.exe Utilman.exe
+    icacls Utilman.exe /grant:r administrators:(RX,R)
+    takeown /F Utilman.exe /U "NT SERVICE\TrustedInstaller"
+    ```
+
+### 隐藏 `D` 盘
+1. 打开 `C:\Windows\System32\compmgmt.msc`，选择 “存储” 》“磁盘管理”
+
+    ![磁盘管理](img\磁盘管理.png)
+2. 右键卷 `(D:)` ，选择 “更改驱动器号和路径(C)...”
+
+    ![驱动器号和路径2](img\驱动器号和路径2.png)
+6. 选择驱动器号 `D:`，点击按钮 <button>删除(R)</button>
+
+    ![警告](img\警告.png)
+7. 点击按钮 <button>是(Y)</button>
+
+    ![磁盘管理2](img\磁盘管理2.png)
