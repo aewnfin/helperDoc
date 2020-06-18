@@ -107,3 +107,17 @@ mount -o remount /dev/shm
 mkdir /dev/shm/tmp
 chmod 1777 /dev/shm/tmp
 mount --bind /dev/shm/tmp /tmp
+
+## 挂载光盘
+mkdir ~/cdrom
+mount -t iso9660o /dev/cdrom /root/cdrom
+# 卸载光盘
+umount ~/cdrom
+
+## vmware 共享文件夹
+# 查看当前有哪些共享目录
+vmware-hgfsclient
+# ???
+# 尝试将共享文件夹进行挂载
+mount -t vmhgfs .host:/??? /mnt/hgfs
+#vmhgfs-fuse .host:/??? /mnt/hgfs
