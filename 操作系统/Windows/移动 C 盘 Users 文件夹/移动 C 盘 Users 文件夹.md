@@ -27,7 +27,7 @@ toc:
 ## 步骤
 @import "启用Administrator账户.md"
 @import "为磁盘添加路径.md"
-### 复制文件夹 "C:\Users" 到 "C:\New"
+### 拷贝文件夹 "C:\Users" 到 "C:\New"
 1. 打开 `C:\Windows\System32\cmd.exe` 输入以下命令，点击 <kbd>Enter</kbd>
     ```bat
     robocopy C:\Users C:\New /E /COPYALL /XJ /XD C:\Users\Administrator
