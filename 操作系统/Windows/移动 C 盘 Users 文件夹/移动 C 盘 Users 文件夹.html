@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.12\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\bjiang\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.12\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
       
       
       
@@ -275,7 +275,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li><a href="#%E5%90%AF%E7%94%A8-administrator-%E8%B4%A6%E6%88%B7">&#x542F;&#x7528; <code>Administrator</code> &#x8D26;&#x6237;</a></li>
 <li><a href="#%E4%B8%BA%E7%A3%81%E7%9B%98%E6%B7%BB%E5%8A%A0%E8%B7%AF%E5%BE%84">&#x4E3A;&#x78C1;&#x76D8;&#x6DFB;&#x52A0;&#x8DEF;&#x5F84;</a></li>
-<li><a href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E5%88%B0-cnew">&#x590D;&#x5236;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x5230; &quot;C:\New&quot;</a></li>
+<li><a href="#%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E5%88%B0-cnew">&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x5230; &quot;C:\New&quot;</a></li>
 <li><a href="#%E5%BC%80%E5%90%AF%E5%90%8E%E9%97%A8">&#x5F00;&#x542F;&#x540E;&#x95E8;</a></li>
 <li><a href="#%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E4%B8%8E-cnew">&#x91CD;&#x547D;&#x540D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x4E0E; &quot;C:\New&quot;</a></li>
 </ul>
@@ -350,7 +350,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <p><img src="img/%E9%A9%B1%E5%8A%A8%E5%99%A8%E5%8F%B7%E5%92%8C%E8%B7%AF%E5%BE%842.png" alt="&#x9A71;&#x52A8;&#x5668;&#x53F7;&#x548C;&#x8DEF;&#x5F84;2"></p>
 </li>
 </ol>
-<h3 class="mume-header" id="%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E5%88%B0-cnew">&#x590D;&#x5236;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x5230; &quot;C:\New&quot;</h3>
+<h3 class="mume-header" id="%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E5%88%B0-cnew">&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x5230; &quot;C:\New&quot;</h3>
 
 <ol>
 <li>&#x6253;&#x5F00; <code>C:\Windows\System32\cmd.exe</code> &#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x70B9;&#x51FB; <kbd>Enter</kbd><pre data-role="codeBlock" data-info="bat" class="language-bat"><code>robocopy C:\Users C:\New /E /COPYALL /XJ /XD C:\Users\Administrator
@@ -359,11 +359,11 @@ pre[data-line] .line-highlight[data-end]:after {
 <h3 class="mume-header" id="%E5%BC%80%E5%90%AF%E5%90%8E%E9%97%A8">&#x5F00;&#x542F;&#x540E;&#x95E8;</h3>
 
 <ol>
-<li>&#x6253;&#x5F00; <code>C:\Windows\System32\cmd.exe</code> &#x4F9D;&#x6B21;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x4F9D;&#x6B21;&#x70B9;&#x51FB; <kbd>Enter</kbd><pre data-role="codeBlock" data-info="bat{class=&quot;line-numbers&quot;}" class="language-bat line-numbers"><code>cd C:\windows\system32
-takeown /f Utilman.exe /A
-icacls Utilman.exe /grant administrators:F
-rename Utilman.exe Utilman_bak.exe
-mklink Utilman.exe cmd.exe
+<li>&#x6253;&#x5F00; <code>C:\Windows\System32\cmd.exe</code> &#x4F9D;&#x6B21;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x4F9D;&#x6B21;&#x70B9;&#x51FB; <kbd>Enter</kbd><pre data-role="codeBlock" data-info="bat{class=&quot;line-numbers&quot;}" class="language-bat line-numbers"><code>cd C:\Windows\System32\
+takeown /f osk.exe /A
+icacls osk.exe /grant administrators:F
+rename osk.exe osk1.exe
+mklink osk.exe cmd.exe
 </code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></pre></li>
 </ol>
 <h3 class="mume-header" id="%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E4%B8%8E-cnew">&#x91CD;&#x547D;&#x540D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x4E0E; &quot;C:\New&quot;</h3>
@@ -373,7 +373,7 @@ mklink Utilman.exe cmd.exe
 <p>&#x70B9;&#x51FB; <img src="img/&#x5F00;&#x59CB;.png" style height="20"> &#x6309;&#x94AE;&#xFF0C;&#x70B9;&#x51FB; <button>&#x6CE8;&#x9500;</button></p>
 </li>
 <li>
-<p>&#x5728;&#x767B;&#x5F55;&#x754C;&#x9762;&#x70B9;&#x51FB; <img src="img/&#x8F7B;&#x677E;&#x8BBF;&#x95EE;.png" height="20">&#xFF0C;&#x8FD9;&#x5C06;&#x6253;&#x5F00; <code>C:\Windows\System32\cmd.exe</code></p>
+<p>&#x5728;&#x767B;&#x5F55;&#x754C;&#x9762;&#x70B9;&#x51FB; <img src="img/&#x8F7B;&#x677E;&#x8BBF;&#x95EE;.png" height="20">&#xFF0C;&#x9009;&#x62E9; <button>&#x5C4F;&#x5E55;&#x952E;&#x76D8;</button> &#xFF0C;&#x8FD9;&#x5C06;&#x6253;&#x5F00; <code>C:\Windows\System32\cmd.exe</code></p>
 <p><img src="img/cmd.png" alt="cmd"></p>
 </li>
 <li>
@@ -382,6 +382,14 @@ mklink Utilman.exe cmd.exe
 move C:\Users C:\Users2 &amp;&amp; move C:\New C:\Users
 </code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></pre></li>
 </ol>
+<blockquote>
+<ol>
+<li>&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x6267;&#x884C; <code>taskmgr.exe</code>&#xFF0C;&#x6253;&#x5F00;&#x201C;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x201D;&#x300B; &#x201C;&#x6027;&#x80FD;&#x201D;&#x6807;&#x7B7E;&#x9875;&#x300B;&#x70B9;&#x51FB;&#x201C;&#x6253;&#x5F00;&#x8D44;&#x6E90;&#x76D1;&#x89C6;&#x5668;&#x201D;</li>
+<li>&#x5728;&#x201C;&#x8D44;&#x6E90;&#x76D1;&#x89C6;&#x5668;&#x201D;&#x300B;&#x201C;CPU&#x201D;&#x6807;&#x7B7E;&#x9875;&#x300B;&#x201C;&#x5173;&#x8054;&#x7684;&#x53E5;&#x67C4;&#x201D;&#x5904;&#x641C;&#x7D22; <input type="text" value="c:\Users" readonly="readonly"></li>
+<li>&#x4F9D;&#x6B21;&#x53F3;&#x952E;<code>&#x540D;&#x79F0;</code>&#x5217;&#x8868;&#x9879;&#xFF0C;&#x9009;&#x62E9;&#x201C;&#x7ED3;&#x675F;&#x8FDB;&#x7A0B;&#x201D;</li>
+<li>&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x91CD;&#x547D;&#x540D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x4E0E; &quot;C:\New&quot;</li>
+</ol>
+</blockquote>
 <h2 class="mume-header" id="%E6%94%B6%E5%B0%BE%E5%B7%A5%E4%BD%9C">&#x6536;&#x5C3E;&#x5DE5;&#x4F5C;</h2>
 
 <h3 class="mume-header" id="%E8%BD%AC%E7%A7%BB-administrator-%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE">&#x8F6C;&#x79FB; <code>Administrator</code> &#x7528;&#x6237;&#x6570;&#x636E;</h3>
@@ -449,7 +457,7 @@ takeown /F Utilman.exe /U &quot;NT SERVICE\TrustedInstaller&quot;
 <ul>
 <li><a href="#%E5%90%AF%E7%94%A8-administrator-%E8%B4%A6%E6%88%B7">&#x542F;&#x7528; <code>Administrator</code> &#x8D26;&#x6237;</a></li>
 <li><a href="#%E4%B8%BA%E7%A3%81%E7%9B%98%E6%B7%BB%E5%8A%A0%E8%B7%AF%E5%BE%84">&#x4E3A;&#x78C1;&#x76D8;&#x6DFB;&#x52A0;&#x8DEF;&#x5F84;</a></li>
-<li><a href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E5%88%B0-cnew">&#x590D;&#x5236;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x5230; &quot;C:\New&quot;</a></li>
+<li><a href="#%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E5%88%B0-cnew">&#x62F7;&#x8D1D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x5230; &quot;C:\New&quot;</a></li>
 <li><a href="#%E5%BC%80%E5%90%AF%E5%90%8E%E9%97%A8">&#x5F00;&#x542F;&#x540E;&#x95E8;</a></li>
 <li><a href="#%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E5%A4%B9-cusers-%E4%B8%8E-cnew">&#x91CD;&#x547D;&#x540D;&#x6587;&#x4EF6;&#x5939; &quot;C:\Users&quot; &#x4E0E; &quot;C:\New&quot;</a></li>
 </ul>
