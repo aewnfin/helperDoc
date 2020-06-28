@@ -6,12 +6,6 @@ toc:
 
 # 移动 C 盘 Users 文件夹
 
-<div id="tags" style="text-align: right;">
-<img src="/logo/魔术师.svg" height="30">
-<img src="/logo/气球狗.svg" height="30">
-<img src="/logo/兔子.svg" height="30">
-</div>
-
 [TOC]
 
 ## 背景
