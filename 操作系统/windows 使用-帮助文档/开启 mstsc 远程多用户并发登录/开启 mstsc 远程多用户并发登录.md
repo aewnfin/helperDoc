@@ -56,7 +56,7 @@ toc:
 >
 > Windows 更新会覆盖系统文件 `termsrv.dll` 的修改，可以关闭 Windows 自动更新
 
-### 方法三 (推荐)
+### 方法三 <small>(*推荐*)</small>
 1. 请下载 [RDPWrap](https://github.com/stascorp/rdpwrap/releases) ，依次以管理员身份执行以下程序，并保证电脑网络畅通
     - `install.bat`
     - `update.bat`
