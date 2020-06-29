@@ -19,15 +19,15 @@ toc:
 &emsp;如果能把用户文件夹挪到另外一块硬盘{++或者另外一个硬盘分区++}上，那么系统维护就会容易得多。平时生成的文件{++大多数人放在“桌面”、“我的文档”里的文件最多++}，都被保存在系统盘之外；于是随时可以在不必担心用户文件丢失的情况下重新安装系统{++或恢复系统备份++}
 
 ## 步骤
-@import "启用Administrator账户.md"
-@import "为磁盘添加路径.md"
+@import "para/启用Administrator账户.md"
+@import "para/为磁盘添加路径.md"
 ### 拷贝文件夹 "C:\Users" 到 "C:\New"
 1. 打开 `C:\Windows\System32\cmd.exe` 输入以下命令，点击 <kbd>Enter</kbd>
     ```bat
     robocopy C:\Users C:\New /E /COPYALL /XJ /XD C:\Users\Administrator
     ```
-@import "开启后门.md"
-@import "重命名文件夹.md"
+@import "para/开启后门.md"
+@import "para/重命名文件夹.md"
 ## 收尾工作
 ### 转移 `Administrator` 用户数据
 1. 登录到原先的账户
@@ -53,10 +53,10 @@ toc:
 1. 右键 `C:\Windows\System32\cmd.exe` 选择“以管理员身份运行”，依次输入以下命令，依次点击 <kbd>Enter</kbd>
     ```bat{class="line-numbers"}
     cd C:\windows\system32
-    del Utilman.exe
-    rename Utilman_bak.exe Utilman.exe
-    icacls Utilman.exe /grant:r administrators:(RX,R)
-    takeown /F Utilman.exe /U "NT SERVICE\TrustedInstaller"
+    del osk.exe
+    rename osk1.exe osk.exe
+    icacls osk.exe /grant:r administrators:(RX,R)
+    takeown /F osk.exe /U "NT SERVICE\TrustedInstaller"
     ```
 
 ### 隐藏 `D` 盘
