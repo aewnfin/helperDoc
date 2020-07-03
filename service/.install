@@ -1,0 +1,115 @@
+#!/bin/bash
+# 依赖 python3
+source python.install
+## ================================================= python 3.8.1
+## 安装 selenium
+pip3 install selenium
+## ------------------------------------------------- selenium
+
+## google-chrome ##
+# >>>>
+## 依赖
+yum install -y pango.x86_64 #
+yum install -y libXcomposite.x86_64
+yum install -y libXcursor.x86_64
+yum install -y libXdamage.x86_64
+#yum install -y libXext.x86_64
+#yum install -y libXi.x86_64
+#yum install -y libXtst.x86_64
+yum install -y libXScrnSaver.x86_64
+#yum install -y libXrandr.x86_64
+#yum install -y GConf2.x86_64
+#yum install -y alsa-lib.x86_64
+yum install -y atk.x86_64
+
+##字体
+#yum install -y ipa-gothic-fonts
+#yum install -y xorg-x11-fonts-100dpi
+#yum install -y xorg-x11-fonts-75dpi
+#yum install -y xorg-x11-utils
+#yum install -y xorg-x11-fonts-cyrillic
+#yum install -y xorg-x11-fonts-Type1
+#yum install -y xorg-x11-fonts-misc
+
+# 添加谷歌官方“最新” Yum 软件源
+yum install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm # CentOS7 可用
+# 添加谷歌官方“指定版本” Yum 软件源
+#yum install -y http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-stable-83.0.4103.97-1.x86_64.rpm
+
+# 如出现错误 [Errno 14] curl#7 - "Failed connect to dl-ssl.google.com:443; Operation now in progress"
+sed -i "s|gpgcheck=1|gpgcheck=0|" /etc/yum.repos.d/google-chrome.repo
+
+# 查看谷歌 Chrome 浏览器的软件包“版本信息”
+yum info google-chrome-stable
+
+# 安装
+yum install -y google-chrome-stable
+# <<<< >>>> centos6.5
+#cd /tmp/
+#wget https://intoli.com/install-google-chrome.sh
+# google-chrome "RHEL / CentOS 6.X / 7.X" 通用安装脚本
+#source install-google-chrome.sh
+# <<<<
+## ================================================= google-chrome
+
+## chrome 不支持 Linux32 不支持 CentOS
+#cd /etc/yum.repos.d
+#wget http://people.centos.org/hughesjr/chromium/6/chromium-el6.repo
+#yum install -y chromium
+## ================================================= chromium
+
+ldd --version
+# # >>>> glibc
+# # ftp://mirrors.ustc.edu.cn/gnu/libc/glibc-2.31.tar.gz
+# # 安装 glibc-2.14
+# cd /tmp/
+# wget ftp://mirrors.ustc.edu.cn/gnu/libc/glibc-2.14.tar.gz
+# tar -zxf glibc-2.14.tar.gz
+# # glibc 不能在源代码目录编译，所以新建一个目录
+# cd glibc-2.14
+# mkdir build
+# cd build
+# ../configure --prefix=/opt/glibc-2.14
+# make #-j4
+# make install
+# export LD_LIBRARY_PATH=/opt/glibc-2.14/lib
+# # 永久设置共享库查找路径
+# echo "/opt/glibc-2.14/lib" >> /etc/ld.so.conf
+# # <<<<
+
+# >>>> glibc
+# 安装 glibc-2.16
+cd /tmp/
+wget ftp://mirrors.ustc.edu.cn/gnu/libc/glibc-2.16.0.tar.gz
+tar -zxf glibc-2.16.0.tar.gz
+# glibc 不能在源代码目录编译，所以新建一个目录
+cd glibc-2.16.0
+mkdir build
+cd build
+../configure --prefix=/opt/glibc-2.16
+make #-j4
+make install
+export LD_LIBRARY_PATH=/opt/glibc-2.16/lib:$LD_LIBRARY_PATH
+# 永久设置共享库查找路径
+echo "/opt/glibc-2.16/lib" >> /etc/ld.so.conf
+# <<<<
+
+## chromedriver ##
+# 从 chromedriver 官网 http://chromedriver.storage.googleapis.com/index.html
+# 镜像 https://npm.taobao.org/mirrors/chromedriver/
+# 获取压缩包
+cd /tmp/
+wget http://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip
+
+# >>>> unzip
+# 安装 zip 解压工具
+yum install -y unzip
+# <<<<
+
+# 解压
+unzip chromedriver_linux64.zip -d /usr/local/
+
+# 链接
+ln -s /usr/local/chromedriver /usr/bin/chromedriver
+## ================================================= chromedriver
+chromedriver

@@ -1,0 +1,58 @@
+#!/bin/bash
+# https://www.howtoing.com/samba-4-domain-controller-installation-on-centos/
+script_root=`pwd`
+
+## 安装依赖
+# >>>>
+PART="sambaADDC_part"
+    chmod +x $PART
+    ./$PART
+# +++++++++++++++++++
+sed -i "s|^$PART...|#$PART...|" ./$PART
+sed -i "\$s|#$PART...|$PART...|" ./$PART
+# <<<<
+
+## 下载源码包
+#wget https://download.samba.org/pub/samba/stable/samba-4.12.3.tar.gz
+curl -C - -o samba-4.12.3.tar.gz https://download.samba.org/pub/samba/stable/samba-4.12.3.tar.gz
+## 解压缩
+tar -zxvf samba-4.12.3.tar.gz -C /tmp/
+
+## 编译
+cd /tmp/samba-4.12.3
+./configure
+# 默认安装位置 /usr/local/samba/
+make
+make test
+make install
+
+ln -b -s /usr/local/samba/bin/* /usr/bin/*
+ln -b -s /usr/local/samba/sbin/* /usr/sbin/*
+# -------------------------------------------- samba AD DC
+cd $script_root
+#显示用于构建Samba的选项
+smbd -b
+
+## 配置 hosts
+echo "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4" > /etc/hosts
+echo "::1         localhost localhost.localdomain localhost6 localhost6.localdomain6" >> /etc/hosts
+#echo "192.168.1.190   samba4.sunil.cc <hostname>" >> /etc/hosts
+sed -i "s|includedir /etc/krb5.conf.d/|#includedir /etc/krb5.conf.d/|" /etc/krb5.conf
+
+## 配置域
+samba-tool domain provision --use-rfc2307 --interactive
+
+# 开放防火墙
+firewall-cmd --permanent --add-service=samba
+firewall-cmd --reload
+
+# 开机自启
+cp ./samba.service /etc/systemd/system/
+systemctl enable samba
+systemctl start samba
+
+# 关闭 Selinux
+sed 's/enforcing/disabled' /etc/sysconfig/selinux
+getenforce
+#Permissive
+#reboot

@@ -1,0 +1,13 @@
+- win
+    - 域控
+- linux
+- 运维工程师
+    - cacti
+- svn
+- git
+- php
+- python
+- lighttpd
+- mengoDB
+- MySQL
+- redis

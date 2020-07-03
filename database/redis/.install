@@ -1,0 +1,118 @@
+#!/bin/bash
+# ====================================
+# yum 安装
+# ------------------------------------
+# 下载 fedora 的 epel 仓库
+#yum install -y epel-release
+# 安装依赖
+#yum install -y jemalloc
+
+# 下载 remi 仓库
+#wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+#wget https://mirrors.aliyun.com/remi/enterprise/remi-release-7.rpm
+#rpm -ivh remi-release-7.rpm
+
+#yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+
+# 安装 redis 数据库
+#yum --enablerepo=remi install redis
+#rpm -qa | grep redis
+# redis-6.0.4-2.el7.remi.x86_64
+# ------------------------------------
+
+# ====================================
+# 压缩包安装
+# ------------------------------------
+# yum -y install gcc gcc-c++ libstdc++-devel
+yum -y install gcc
+
+yum install -y tcl
+# tcl-8.5.13-8.el7.x86_64
+
+wget http://download.redis.io/releases/redis-5.0.8.tar.gz
+tar xzf redis-5.0.8.tar.gz
+cd redis-5.0.8
+#make test
+make MALLOC=libc PREFIX=/usr/local/ install
+
+# ------------------------------------
+# init 管理启动
+# 支持启动和停止
+#cp utils/redis_init_script /etc/init.d/redis
+#cp redis.conf /etc/redis/
+./utils/install_server.sh
+# 自启动
+chkconfig --add redis
+chkconfig redis on
+
+# ------------------------------------
+# systemctl 管理启动
+cp utils/redis_init_script /etc/init.d/redis
+> /lib/systemd/system/redis.service
+#[Unit]
+#Description=Redis
+#After=network.target
+#
+#[Service]
+#ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf  --daemonize no
+#ExecStop=/usr/local/bin/redis-cli -h 127.0.0.1 -p 6379 shutdown
+#
+#[Install]
+#WantedBy=multi-user.target
+# 自启动
+systemctl enable redisroot
+
+#ln -s /lib/systemd/system/redis.service /etc/systemd/system/multi-user.target.wants/redis.service
+# ------------------------------------
+
+# service 管理启动
+#service redis start
+#service redis stop
+#service redis status
+#ps -ef | grep redis
+# 开机自启动
+#chkconfig redis on
+# 启动 6380 端口的 redis 实例
+#/usr/local/bin/redis-server --port 6380 &
+
+# systemctl 管理启动
+#systemctl start redis
+#systemctl enable redis
+
+# 使用本机 redis ====================================
+redis-cli
+#> keys *
+
+# 防火墙开放相应端口====================================
+firewall-cmd --list-ports
+firewall-cmd --zone=public --add-port=6379/tcp --permanent
+firewall-cmd --reload
+# 开启6379
+#/sbin/iptables -I INPUT -p tcp --dport 6379 -j ACCEPT
+# 开启6380
+#/sbin/iptables -I INPUT -p tcp --dport 6380 -j ACCEPT
+# 保存
+#/etc/rc.d/init.d/iptables save
+# centos 7下执行
+#service iptables save
+
+# -------------------------------------------------------
+
+# 修改 redis 默认端口和密码
+vi /etc/redis.conf
+# 6380 端口配置文件
+#vi /etc/redis6380.conf
+#port 6379
+#requirepass foobared
+#protected-mode no
+
+# 使用配置文件启动 redis
+redis-server /etc/redis.conf &
+# 使用端口登录
+redis-cli -h 127.0.0.1 -p 6379
+
+# 停止 redis
+redis-cli -h 127.0.0.1 -p 6379
+#> shutdown
+ps -ef | grep redis
+kill -9 XXX

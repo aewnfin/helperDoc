@@ -1,0 +1,39 @@
+#!/bin/bash
+# Red Hat 不提供将 samba 作为 AD DC 运行的软件包，请从源代码构建安装
+
+## 在 CentOS 7 和 CentOS 8 安装
+yum install -y samba
+# 仅支持将 Samba 作为域成员以及 NT4 PDC 或 BDC
+
+## CentOS 6 安装 samba
+#yum install -y samba4
+# 仅支持将 Samba 作为域成员以及 NT4 PDC 或 BDC
+#------------------ samba 4.x
+smbd -V
+
+# 新建 Samba 用户
+#smbpasswd -a root
+smbpasswd -a jliu
+#;redhat
+pdbedit -L
+
+# 创建文件夹
+mkdir -p /srv/samba/guest
+chmod -R 777 /srv/samba/guest
+
+# 检查配置文件
+testparm -s smb.conf
+
+# 开机自启
+systemctl enable smb nmb
+
+# 开放防火墙
+firewall-cmd --permanent --add-service=samba
+firewall-cmd --reload
+# success
+
+# 关闭 Selinux
+sed 's/enforcing/disabled' /etc/sysconfig/selinux
+getenforce
+#Permissive
+reboot
